@@ -83,8 +83,6 @@
 		0A23FFE116B5E99200684634 /* CardMatch */ = {
 			isa = PBXGroup;
 			children = (
-				0A23FFEA16B5E99200684634 /* CardAppDelegate.h */,
-				0A23FFEB16B5E99200684634 /* CardAppDelegate.m */,
 				0A23FFF316B5E99200684634 /* MainStoryboard.storyboard */,
 				0A23FFF616B5E99200684634 /* CardViewController.h */,
 				0A23FFF716B5E99200684634 /* CardViewController.m */,
@@ -96,6 +94,8 @@
 		0A23FFE216B5E99200684634 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0A23FFEA16B5E99200684634 /* CardAppDelegate.h */,
+				0A23FFEB16B5E99200684634 /* CardAppDelegate.m */,
 				0A23FFE316B5E99200684634 /* CardMatch-Info.plist */,
 				0A23FFE416B5E99200684634 /* InfoPlist.strings */,
 				0A23FFE716B5E99200684634 /* main.m */,
