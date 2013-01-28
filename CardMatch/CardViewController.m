@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) PLayingCardDeck *deck;
+@property (weak, nonatomic) IBOutlet UIButton *cardBtn1;
 
 @end
 
