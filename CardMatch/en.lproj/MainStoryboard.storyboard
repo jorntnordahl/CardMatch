@@ -30,13 +30,23 @@
                                     <action selector="flipCard:" destination="2" eventType="touchUpInside" id="UF4-S3-eVz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWN-ll-6NT">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EWN-ll-6NT" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="18m-Il-pX2"/>
+                            <constraint firstAttribute="bottom" secondItem="EWN-ll-6NT" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3e2-ot-hgS"/>
                             <constraint firstItem="Qf7-XW-mXy" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="5hn-bq-XLJ"/>
                             <constraint firstItem="Qf7-XW-mXy" firstAttribute="top" secondItem="3" secondAttribute="top" constant="211" id="T1f-av-yRQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="flipsLabel" destination="EWN-ll-6NT" id="pRd-oz-hJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,6 +55,10 @@
     <classes>
         <class className="CardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

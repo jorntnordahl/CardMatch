@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A23000016B5EE0400684634 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23FFFF16B5EE0400684634 /* Card.m */; };
+		0A23000416B5EF8D00684634 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23000316B5EF8D00684634 /* Deck.m */; };
+		0A23000716B5F44000684634 /* PLayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23000616B5F43F00684634 /* PLayingCard.m */; };
+		0A23000A16B5F7D100684634 /* PLayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23000916B5F7D100684634 /* PLayingCardDeck.m */; };
 		0A23FFDC16B5E99200684634 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A23FFDB16B5E99200684634 /* UIKit.framework */; };
 		0A23FFDE16B5E99200684634 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A23FFDD16B5E99200684634 /* Foundation.framework */; };
 		0A23FFE016B5E99200684634 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A23FFDF16B5E99200684634 /* CoreGraphics.framework */; };
@@ -21,6 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A23000216B5EF8D00684634 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
+		0A23000316B5EF8D00684634 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
+		0A23000516B5F43F00684634 /* PLayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLayingCard.h; path = Model/PLayingCard.h; sourceTree = "<group>"; };
+		0A23000616B5F43F00684634 /* PLayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLayingCard.m; path = Model/PLayingCard.m; sourceTree = "<group>"; };
+		0A23000816B5F7D100684634 /* PLayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PLayingCardDeck.h; path = Model/PLayingCardDeck.h; sourceTree = "<group>"; };
+		0A23000916B5F7D100684634 /* PLayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PLayingCardDeck.m; path = Model/PLayingCardDeck.m; sourceTree = "<group>"; };
 		0A23FFD716B5E99200684634 /* CardMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A23FFDB16B5E99200684634 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0A23FFDD16B5E99200684634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +47,8 @@
 		0A23FFF416B5E99200684634 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		0A23FFF616B5E99200684634 /* CardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
 		0A23FFF716B5E99200684634 /* CardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		0A23FFFE16B5EE0400684634 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
+		0A23FFFF16B5EE0400684634 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A23000116B5EEE300684634 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A23FFFE16B5EE0400684634 /* Card.h */,
+				0A23FFFF16B5EE0400684634 /* Card.m */,
+				0A23000216B5EF8D00684634 /* Deck.h */,
+				0A23000316B5EF8D00684634 /* Deck.m */,
+				0A23000516B5F43F00684634 /* PLayingCard.h */,
+				0A23000616B5F43F00684634 /* PLayingCard.m */,
+				0A23000816B5F7D100684634 /* PLayingCardDeck.h */,
+				0A23000916B5F7D100684634 /* PLayingCardDeck.m */,
+			);
+			name = Model;
+			path = CardMatch;
+			sourceTree = "<group>";
+		};
 		0A23FFCC16B5E99200684634 = {
 			isa = PBXGroup;
 			children = (
+				0A23000116B5EEE300684634 /* Model */,
 				0A23FFE116B5E99200684634 /* CardMatch */,
 				0A23FFDA16B5E99200684634 /* Frameworks */,
 				0A23FFD816B5E99200684634 /* Products */,
@@ -177,6 +206,10 @@
 				0A23FFE816B5E99200684634 /* main.m in Sources */,
 				0A23FFEC16B5E99200684634 /* CardAppDelegate.m in Sources */,
 				0A23FFF816B5E99200684634 /* CardViewController.m in Sources */,
+				0A23000016B5EE0400684634 /* Card.m in Sources */,
+				0A23000416B5EF8D00684634 /* Deck.m in Sources */,
+				0A23000716B5F44000684634 /* PLayingCard.m in Sources */,
+				0A23000A16B5F7D100684634 /* PLayingCardDeck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
