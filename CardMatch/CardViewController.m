@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) PLayingCardDeck *deck;
+
 @property (weak, nonatomic) IBOutlet UIButton *cardBtn1;
 
 @end
@@ -36,17 +37,21 @@
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d",self.flipCount];
 }
-        
-                           
+
 - (IBAction)flipCard:(UIButton *)sender
 {
     sender.selected = !sender.isSelected;
     if (sender.isSelected)
     {
-        // get a new card:
-        Card *randomCard = [self.deck drawRandomCard];
-        [sender setTitle:randomCard.contents forState:UIControlStateSelected];
+        NSString *currentFlippedTitle = [sender titleForState:UIControlStateSelected];
+        if ([@"" isEqualToString:currentFlippedTitle])
+        {
+            // get a new card:
+            Card *randomCard = [self.deck drawRandomCard];
+            [sender setTitle:randomCard.contents forState:UIControlStateSelected];
+        }
     }
     self.flipCount++;
 }
+
 @end
