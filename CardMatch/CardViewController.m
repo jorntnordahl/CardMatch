@@ -13,8 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) PLayingCardDeck *deck;
-
 @property (weak, nonatomic) IBOutlet UIButton *cardBtn1;
+@property (weak, nonatomic) IBOutlet UIButton *cardBtn2;
+@property (strong, nonatomic) NSString *firstCard;
 
 @end
 
@@ -22,6 +23,9 @@
 
 @synthesize flipsLabel;
 @synthesize deck = _deck;
+@synthesize firstCard;
+@synthesize cardBtn1;
+@synthesize cardBtn2;
 
 -(PLayingCardDeck *) deck
 {
@@ -43,6 +47,15 @@
     sender.selected = !sender.isSelected;
     if (sender.isSelected)
     {
+        if (!cardBtn1)
+        {
+            cardBtn1 = sender;
+        }
+        else
+        {
+            cardBtn2 = sender;
+        }
+        
         NSString *currentFlippedTitle = [sender titleForState:UIControlStateSelected];
         if ([@"" isEqualToString:currentFlippedTitle])
         {
@@ -50,6 +63,23 @@
             Card *randomCard = [self.deck drawRandomCard];
             [sender setTitle:randomCard.contents forState:UIControlStateSelected];
         }
+        
+        //if ([[sender titleForState:UIControlStateSelected] isEqualToString:firstCard])
+        {
+            if (cardBtn1)
+            {
+                [cardBtn1 setEnabled:NO];
+            }
+            if (cardBtn2)
+            {
+                [cardBtn2 setEnabled:NO];
+            }
+        }
+    }
+    else
+    {
+        cardBtn1 = nil;
+        cardBtn2 = nil;
     }
     self.flipCount++;
 }

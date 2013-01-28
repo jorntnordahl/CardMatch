@@ -723,6 +723,7 @@
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cardBtn1" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cardBtn2" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
