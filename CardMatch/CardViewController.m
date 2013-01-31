@@ -7,33 +7,106 @@
 //
 
 #import "CardViewController.h"
+#import "CardMatchingGame.h"
 
 @interface CardViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
-@property (strong, nonatomic) PLayingCardDeck *deck;
-@property (weak, nonatomic) IBOutlet UIButton *cardBtn1;
-@property (weak, nonatomic) IBOutlet UIButton *cardBtn2;
-@property (strong, nonatomic) NSString *firstCard;
+//@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+//@property (weak, nonatomic) IBOutlet UIButton *newGameBtn;
+@property (strong, nonatomic) CardMatchingGame *game;
+@property (weak, nonatomic) IBOutlet UIButton *restartButton;
 
 @end
 
 @implementation CardViewController
 
 @synthesize flipsLabel;
-@synthesize deck = _deck;
-@synthesize firstCard;
-@synthesize cardBtn1;
-@synthesize cardBtn2;
+//@synthesize deck = _deck;
 
--(PLayingCardDeck *) deck
+
+-(CardMatchingGame *) game
 {
-    if (!_deck)
+    if (!_game)
     {
-        _deck = [[PLayingCardDeck alloc] init];
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                  usingDeck:[[PLayingCardDeck alloc] init]];
     }
-    return _deck;
+    
+    return _game;
+}
+
+- (IBAction)restartGame:(UIButton *)sender {
+    self.game = nil;
+    self.flipCount = 0;
+    [self updateUI];
+}
+
+-(void) updateUI
+{
+    for (UIButton *cardbutton in self.cardButtons)
+    {
+        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
+        [cardbutton setTitle:card.contents forState:UIControlStateSelected];
+        [cardbutton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardbutton.selected = card.isFaceUp;
+        cardbutton.enabled = !card.isUnplayable;
+        cardbutton.alpha = (card.isUnplayable ? 0.3 : 1.0);
+    }
+    
+    // figure out if there are no other cards:
+    /*
+    BOOL hasMoreMatches = NO;
+    for (int i = 0; i < [self.cardButtons count]; i++)
+    {
+        for (int j = 0; j < [self.cardButtons count]; j++)
+        {
+            if (i != j)
+            {
+                Card *card1 = [self.game cardAtIndex:self.cardButtons[i]];
+                Card *card2 = [self.game cardAtIndex:self.cardButtons[j]];
+                
+                if (!card1.isUnplayable && !card2.isUnplayable)
+                {
+                    int matchCount = [card1 match:@[card2]];
+                    if (matchCount)
+                    {
+                        hasMoreMatches = YES;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if (hasMoreMatches)
+        {
+            break;
+        }
+    }
+    
+    if (!hasMoreMatches)
+    {
+        for (UIButton *cardbutton in self.cardButtons)
+        {
+            Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
+            if (!card.isUnplayable)
+            {
+                cardbutton.hidden = YES;
+            }
+        }
+    }
+    */
+    
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", [self.game score]];
+}
+
+-(void) setCardButtons:(NSArray *)cardButtons
+{
+    _cardButtons = cardButtons;
+    [self updateUI];
 }
 
 -(void) setFlipCount:(int)flipCount
@@ -44,44 +117,9 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    sender.selected = !sender.isSelected;
-    if (sender.isSelected)
-    {
-        if (!cardBtn1)
-        {
-            cardBtn1 = sender;
-        }
-        else
-        {
-            cardBtn2 = sender;
-        }
-        
-        NSString *currentFlippedTitle = [sender titleForState:UIControlStateSelected];
-        if ([@"" isEqualToString:currentFlippedTitle])
-        {
-            // get a new card:
-            Card *randomCard = [self.deck drawRandomCard];
-            [sender setTitle:randomCard.contents forState:UIControlStateSelected];
-        }
-        
-        //if ([[sender titleForState:UIControlStateSelected] isEqualToString:firstCard])
-        {
-            if (cardBtn1)
-            {
-                [cardBtn1 setEnabled:NO];
-            }
-            if (cardBtn2)
-            {
-                [cardBtn2 setEnabled:NO];
-            }
-        }
-    }
-    else
-    {
-        cardBtn1 = nil;
-        cardBtn2 = nil;
-    }
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject: sender]];
     self.flipCount++;
+    [self updateUI];
 }
 
 @end
