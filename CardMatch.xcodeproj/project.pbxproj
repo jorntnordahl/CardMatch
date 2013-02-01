@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A0A202D16BB7AD4004FD749 /* CardMatchinGame3.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A202C16BB7AD4004FD749 /* CardMatchinGame3.m */; };
+		0A0A202F16BB896E004FD749 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0A0A202E16BB896D004FD749 /* image.jpeg */; };
 		0A14A19216BA21BB00C77C15 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A14A19116BA21BB00C77C15 /* CardMatchingGame.m */; };
 		0A23000016B5EE0400684634 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23FFFF16B5EE0400684634 /* Card.m */; };
 		0A23000416B5EF8D00684634 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A23000316B5EF8D00684634 /* Deck.m */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0A0A202B16BB7AD4004FD749 /* CardMatchinGame3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardMatchinGame3.h; path = Model/CardMatchinGame3.h; sourceTree = "<group>"; };
 		0A0A202C16BB7AD4004FD749 /* CardMatchinGame3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardMatchinGame3.m; path = Model/CardMatchinGame3.m; sourceTree = "<group>"; };
+		0A0A202E16BB896D004FD749 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		0A14A19016BA21BB00C77C15 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		0A14A19116BA21BB00C77C15 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		0A23000216B5EF8D00684634 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		0A23000116B5EEE300684634 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0A0A202E16BB896D004FD749 /* image.jpeg */,
 				0A23FFFE16B5EE0400684634 /* Card.h */,
 				0A23FFFF16B5EE0400684634 /* Card.m */,
 				0A23000216B5EF8D00684634 /* Deck.h */,
@@ -203,6 +206,7 @@
 				0A23FFF016B5E99200684634 /* Default@2x.png in Resources */,
 				0A23FFF216B5E99200684634 /* Default-568h@2x.png in Resources */,
 				0A23FFF516B5E99200684634 /* MainStoryboard.storyboard in Resources */,
+				0A0A202F16BB896E004FD749 /* image.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

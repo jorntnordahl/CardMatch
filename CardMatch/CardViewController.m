@@ -55,10 +55,14 @@
     self.flipCount = 0;
     [self updateUI];
     self.progressLbl.text = @"Welcome to Match This Card!";
+    self.cardMatchControl.enabled = YES;
+    self.game = nil;
 }
 
 -(void) updateUI
 {
+    UIImage *btnImage = [UIImage imageNamed:@"image.jpeg"];
+    
     for (UIButton *cardbutton in self.cardButtons)
     {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
@@ -67,7 +71,17 @@
         cardbutton.selected = card.isFaceUp;
         cardbutton.enabled = !card.isUnplayable;
         cardbutton.alpha = (card.isUnplayable ? 0.3 : 1.0);
+        if (!card.isFaceUp)
+        {
+            [cardbutton setBackgroundImage:btnImage forState:UIControlStateNormal];
+        }
+        else
+        {
+            [cardbutton setBackgroundImage:nil forState:UIControlStateNormal];
+        }
     }
+    
+    self.cardMatchControl.enabled = NO;
     
     // update label on top:
     self.progressLbl.text = [self.game lastFlipResults];
