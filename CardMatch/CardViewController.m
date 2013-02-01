@@ -8,33 +8,43 @@
 
 #import "CardViewController.h"
 #import "CardMatchingGame.h"
+#import "CardMatchinGame3.h"
 
 @interface CardViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic) int flipCount;
-//@property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-//@property (weak, nonatomic) IBOutlet UIButton *newGameBtn;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UIButton *restartButton;
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *cardMatchControl;
+@property (nonatomic) NSInteger matchCount;
 
 @end
 
 @implementation CardViewController
 
 @synthesize flipsLabel;
-//@synthesize deck = _deck;
 
 
 -(CardMatchingGame *) game
 {
     if (!_game)
     {
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                  usingDeck:[[PLayingCardDeck alloc] init]];
+        if (self.matchCount == 2 || self.matchCount == 0)
+        {
+            _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                      usingDeck:[[PLayingCardDeck alloc] init]
+                                                    andMatchCount:[[self.cardMatchControl titleForSegmentAtIndex:self.cardMatchControl.selectedSegmentIndex] integerValue]];
+        }
+        else if (self.matchCount == 3)
+        {
+            _game = [[CardMatchinGame3 alloc] initWithCardCount:[self.cardButtons count]
+                                                      usingDeck:[[PLayingCardDeck alloc] init]
+                                                  andMatchCount:[[self.cardMatchControl titleForSegmentAtIndex:self.cardMatchControl.selectedSegmentIndex] integerValue]];
+        }
     }
     
     return _game;
@@ -125,6 +135,11 @@
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject: sender]];
     self.flipCount++;
     [self updateUI];
+}
+
+- (IBAction)matchCountChanged:(UISegmentedControl *)sender {
+    NSString *countStr = [sender titleForSegmentAtIndex:sender.selectedSegmentIndex];
+    self.matchCount = [countStr integerValue];
 }
 
 @end

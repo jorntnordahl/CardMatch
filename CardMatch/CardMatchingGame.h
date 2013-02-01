@@ -11,12 +11,15 @@
 #import "Deck.h" 
 
 @interface CardMatchingGame : NSObject
-
-@property (readonly, nonatomic) int score;
+@property (nonatomic, readwrite) int score;
+@property (strong, nonatomic) NSMutableArray *cards; //of cards
+@property (strong, nonatomic) NSMutableArray *flipResults;
+@property (nonatomic, readwrite) int matchCount;
 
 // designated initializer
 -(id) initWithCardCount:(NSUInteger) count
-              usingDeck:(Deck *) deck;
+              usingDeck:(Deck *) deck
+          andMatchCount:(NSUInteger) matchCount;
 
 
 -(void) flipCardAtIndex:(NSUInteger) index;

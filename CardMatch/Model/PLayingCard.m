@@ -30,6 +30,22 @@
             score = 4;
         }
     }
+    else
+    {
+        PLayingCard *otherCard1 = [otherCards objectAtIndex:0];
+        PLayingCard *otherCard2 = [otherCards objectAtIndex:1];
+        if ([otherCard1.suit isEqualToString:self.suit] &&
+            [otherCard2.suit isEqualToString:self.suit])
+        {
+            score = 3;
+        }
+        else if (self.rank == otherCard1.rank &&
+                 self.rank == otherCard2.rank)
+        {
+            score = 12;
+        }
+
+    }
     
     return score;
 }

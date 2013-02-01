@@ -9,9 +9,7 @@
 #import "CardMatchingGame.h"
 
 @interface CardMatchingGame()
-@property (nonatomic, readwrite) int score;
-@property (strong, nonatomic) NSMutableArray *cards; //of cards
-@property (strong, nonatomic) NSMutableArray *flipResults;
+
 @end
 
 @implementation CardMatchingGame
@@ -37,11 +35,14 @@
 
 -(id) initWithCardCount:(NSUInteger) count
               usingDeck:(Deck *) deck
+          andMatchCount:(NSUInteger) matchCount
 {
     self = [super init];
     
     if (self)
     {
+        
+        
         for (int i = 0; i < count; i++)
         {
             Card *card = [deck drawRandomCard];
@@ -56,8 +57,10 @@
     return self;
 }
 
-#define MATCH_BONUS 4;
-#define MISMATCH_PENALTY 2
+#define MATCH_BONUS_2 4;
+#define MATCH_BONUS_3 8;
+#define MISMATCH_PENALTY_2 2
+#define MISMATCH_PENALTY_3 3
 #define FLIP_COST 1
 
 -(void) flipCardAtIndex:(NSUInteger) index
@@ -80,15 +83,15 @@
                     {
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        int bonus = matchScore * MATCH_BONUS;
+                        self.score += matchScore * MATCH_BONUS_2;
+                        int bonus = matchScore * MATCH_BONUS_2;
                         flipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, bonus];
                     }
                     else
                     {
                         otherCard.faceUp = NO;
-                        self.score -= MISMATCH_PENALTY;
-                        flipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %d points penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
+                        self.score -= MISMATCH_PENALTY_2;
+                        flipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %d points penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY_2];
                     }
                     
                     break;

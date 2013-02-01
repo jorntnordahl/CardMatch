@@ -266,6 +266,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cards to Match" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCY-nU-K39">
+                                <rect key="frame" x="113" y="328" width="141" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8bH-hp-M1o">
                                 <rect key="frame" x="169" y="500" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -296,10 +303,22 @@
                                     <action selector="restartGame:" destination="2" eventType="touchUpInside" id="s2F-Dt-sgD"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Nkc-Hl-6ks">
+                                <rect key="frame" x="113" y="362" width="104" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <connections>
+                                    <action selector="matchCountChanged:" destination="2" eventType="valueChanged" id="wkV-Kb-uNa"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.48702909666142113" green="0.84310370742630592" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="cardMatchControl" destination="Nkc-Hl-6ks" id="OKh-jo-iOa"/>
                         <outlet property="flipsLabel" destination="EWN-ll-6NT" id="pRd-oz-hJu"/>
                         <outlet property="progressLbl" destination="rsV-wF-Nfj" id="OjX-wc-HXB"/>
                         <outlet property="scoreLabel" destination="8bH-hp-M1o" id="PYd-GM-VGM"/>
@@ -324,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-869" y="-208"/>
+            <point key="canvasLocation" x="-939" y="-188"/>
         </scene>
     </scenes>
     <classes>
@@ -332,8 +351,11 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardViewController.h"/>
             <relationships>
                 <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="matchCountChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="restartGame:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cardMatchControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="izaButnOutlet" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="progressLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="restartButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
