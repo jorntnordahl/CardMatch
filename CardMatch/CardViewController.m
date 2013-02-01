@@ -61,7 +61,7 @@
 
 -(void) updateUI
 {
-    UIImage *btnImage = [UIImage imageNamed:@"image.jpeg"];
+    UIImage *btnImage = [UIImage imageNamed:@"red-card-2.png"];
     
     for (UIButton *cardbutton in self.cardButtons)
     {
