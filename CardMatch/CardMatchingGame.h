@@ -23,4 +23,8 @@
 
 -(Card *)cardAtIndex:(NSUInteger)index;
 
+-(BOOL) isGameOver;
+
+-(NSString *) lastFlipResults;
+
 @end

@@ -11,9 +11,19 @@
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) int score;
 @property (strong, nonatomic) NSMutableArray *cards; //of cards
+@property (strong, nonatomic) NSMutableArray *flipResults;
 @end
 
 @implementation CardMatchingGame
+
+-(NSMutableArray *) flipResults
+{
+    if (!_flipResults)
+    {
+        _flipResults = [[NSMutableArray alloc]init];
+    }
+    return _flipResults;
+}
 
 -(NSMutableArray *) cards
 {
@@ -58,6 +68,8 @@
     {
         if (!card.isFaceUp)
         {
+            NSString *flipResult = nil;
+            
             for (Card *otherCard in self.cards)
             {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable)
@@ -69,16 +81,29 @@
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS;
+                        int bonus = matchScore * MATCH_BONUS;
+                        flipResult = [NSString stringWithFormat:@"Matched %@ & %@ for %d points", card.contents, otherCard.contents, bonus];
                     }
                     else
                     {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
+                        flipResult = [NSString stringWithFormat:@"%@ & %@ don't match! %d points penalty!", card.contents, otherCard.contents, MISMATCH_PENALTY];
                     }
                     
                     break;
                 }
             }
+            
+            // did not find a match or miss match:
+            if (flipResult == nil)
+            {
+                flipResult = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            }
+            
+            // add flipResult to history of flips:
+            [self.flipResults insertObject:flipResult atIndex:0];
+            
             self.score -= FLIP_COST;
         }
         card.faceUp = !card.faceUp;
@@ -94,6 +119,27 @@
         card = self.cards[index];
     }
     return card;
+}
+
+-(BOOL) isGameOver
+{
+    for (Card *otherCard in self.cards)
+    {
+        if (!otherCard.isUnplayable)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+-(NSString *) lastFlipResults
+{
+    if (self.flipResults.count > 0)
+    {
+        return [self.flipResults objectAtIndex:0];
+    }
+    return nil;
 }
 
 @end

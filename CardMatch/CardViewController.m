@@ -19,6 +19,7 @@
 //@property (weak, nonatomic) IBOutlet UIButton *newGameBtn;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (weak, nonatomic) IBOutlet UIButton *restartButton;
+@property (weak, nonatomic) IBOutlet UILabel *progressLbl;
 
 @end
 
@@ -43,6 +44,7 @@
     self.game = nil;
     self.flipCount = 0;
     [self updateUI];
+    self.progressLbl.text = @"Welcome to Match This Card!";
 }
 
 -(void) updateUI
@@ -56,6 +58,9 @@
         cardbutton.enabled = !card.isUnplayable;
         cardbutton.alpha = (card.isUnplayable ? 0.3 : 1.0);
     }
+    
+    // update label on top:
+    self.progressLbl.text = [self.game lastFlipResults];
     
     // figure out if there are no other cards:
     /*
