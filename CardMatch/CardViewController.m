@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *cardMatchControl;
 @property (nonatomic) NSInteger matchCount;
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
 
 @end
 
@@ -86,37 +87,9 @@
     // update label on top:
     self.progressLbl.text = [self.game lastFlipResults];
     
-    // figure out if there are no other cards:
-    /*
-    BOOL hasMoreMatches = NO;
-    for (int i = 0; i < [self.cardButtons count]; i++)
-    {
-        for (int j = 0; j < [self.cardButtons count]; j++)
-        {
-            if (i != j)
-            {
-                Card *card1 = [self.game cardAtIndex:self.cardButtons[i]];
-                Card *card2 = [self.game cardAtIndex:self.cardButtons[j]];
-                
-                if (!card1.isUnplayable && !card2.isUnplayable)
-                {
-                    int matchCount = [card1 match:@[card2]];
-                    if (matchCount)
-                    {
-                        hasMoreMatches = YES;
-                        break;
-                    }
-                }
-            }
-        }
-        
-        if (hasMoreMatches)
-        {
-            break;
-        }
-    }
     
-    if (!hasMoreMatches)
+    // figure out if there are no other cards:
+    if ([self.game isGameOver])
     {
         for (UIButton *cardbutton in self.cardButtons)
         {
@@ -127,7 +100,6 @@
             }
         }
     }
-    */
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", [self.game score]];
 }
@@ -137,6 +109,14 @@
     _cardButtons = cardButtons;
     [self updateUI];
 }
+
+- (IBAction)sliderChanged:(UISlider *)sender {
+    int sliderValue = sender.value;
+    NSLog(@"Slider: %d", sliderValue);
+    NSString *flipResult = [self.game flipResultAt:sliderValue];
+    self.progressLbl.text = flipResult;
+}
+
 
 -(void) setFlipCount:(int)flipCount
 {
@@ -149,6 +129,8 @@
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject: sender]];
     self.flipCount++;
     [self updateUI];
+    self.historySlider.maximumValue = [[self.game flipResults] count] - 1;
+    self.historySlider.value = self.historySlider.maximumValue;
 }
 
 - (IBAction)matchCountChanged:(UISegmentedControl *)sender {

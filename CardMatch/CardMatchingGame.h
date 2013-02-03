@@ -24,6 +24,8 @@
 
 -(void) flipCardAtIndex:(NSUInteger) index;
 
+-(NSString *) flipResultAt:(int)index;
+
 -(Card *)cardAtIndex:(NSUInteger)index;
 
 -(BOOL) isGameOver;

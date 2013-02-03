@@ -126,13 +126,27 @@
 
 -(BOOL) isGameOver
 {
-    for (Card *otherCard in self.cards)
+    for (int i = 0; i < [self.cards count]; i++)
     {
-        if (!otherCard.isUnplayable)
+        for (int j = 0; j < [self.cards count]; j++)
         {
-            return NO;
+            if (i != j)
+            {
+                Card *card1 = [self cardAtIndex:i];
+                Card *card2 = [self cardAtIndex:j];
+                
+                if (!card1.isUnplayable && !card2.isUnplayable)
+                {
+                    int matchCount = [card1 match:@[card2]];
+                    if (matchCount)
+                    {
+                        return NO;
+                    }
+                }
+            }
         }
-    }
+     }
+    
     return YES;
 }
 
@@ -143,6 +157,11 @@
         return [self.flipResults objectAtIndex:0];
     }
     return nil;
+}
+
+-(NSString *) flipResultAt:(int)index
+{
+    return [self.flipResults objectAtIndex:index];
 }
 
 @end

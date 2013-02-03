@@ -12,7 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"dark-abstract.jpg"]];
+    
     return YES;
 }
 							
