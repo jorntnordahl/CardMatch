@@ -52,7 +52,36 @@
 }
 
 - (IBAction)restartGame:(UIButton *)sender {
-    self.game = nil;
+    
+    // create a simple alert
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Deal new cards?"
+                          message:@"Your current game and score\nwill be lost !"
+                          delegate:self
+                          cancelButtonTitle:@"Back to the game"
+                          otherButtonTitles:@"Start a new game", nil];
+    // and display it
+    [alert show];
+}
+
+// protocole UIAlertViewDelegate
+// this method will be called with a "click" on an UIALertView button
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // if it's the "OK" button (Cancel is 0 (by default))
+    if (buttonIndex == 1)
+    {
+        // reset
+        self.game = nil;
+        [self initUI];
+    }
+    // dismiss the alert (and go back to the app)
+    //[alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+}
+
+-(void) initUI
+{
+   self.game = nil;
     self.flipCount = 0;
     [self updateUI];
     self.progressLbl.text = @"Welcome to Match This Card!";
@@ -126,6 +155,11 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
+    [UIView beginAnimations:@"flipCard" context:nil];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:sender cache:YES];
+    [UIView setAnimationDuration:0.4];
+    [UIView commitAnimations];
+    
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject: sender]];
     self.flipCount++;
     [self updateUI];
