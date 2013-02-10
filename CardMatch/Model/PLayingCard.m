@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Jorn Nordahl. All rights reserved.
 //
 
-#import "PLayingCard.h"
+#import "PlayingCard.h"
 
-@implementation PLayingCard
+@implementation PlayingCard
 
 @synthesize suit = _suit;
 @synthesize rank = _rank;
@@ -20,7 +20,7 @@
     
     if ([otherCards count] == 1)
     {
-        PLayingCard *otherCard = [otherCards lastObject];
+        PlayingCard *otherCard = [otherCards lastObject];
         if ([otherCard.suit isEqualToString:self.suit])
         {
             score = 1;
@@ -32,8 +32,8 @@
     }
     else
     {
-        PLayingCard *otherCard1 = [otherCards objectAtIndex:0];
-        PLayingCard *otherCard2 = [otherCards objectAtIndex:1];
+        PlayingCard *otherCard1 = [otherCards objectAtIndex:0];
+        PlayingCard *otherCard2 = [otherCards objectAtIndex:1];
         if ([otherCard1.suit isEqualToString:self.suit] &&
             [otherCard2.suit isEqualToString:self.suit])
         {
@@ -54,7 +54,7 @@
 
 - (NSString *) contents
 {
-    NSArray *rankStrings = [PLayingCard validRanks];
+    NSArray *rankStrings = [PlayingCard validRanks];
     
     return [rankStrings[self.rank] stringByAppendingString: self.suit];
 }
@@ -76,7 +76,7 @@
 
 -(void) setSuit: (NSString *) suit
 {
-    if ([[PLayingCard validSuits] containsObject:suit])
+    if ([[PlayingCard validSuits] containsObject:suit])
     {
         _suit = suit;
     }
@@ -89,7 +89,7 @@
 
 - (void) setRank: (NSUInteger) rank
 {
-        if (rank <= [PLayingCard maxRank])
+        if (rank <= [PlayingCard maxRank])
         {
             _rank = rank;
         }

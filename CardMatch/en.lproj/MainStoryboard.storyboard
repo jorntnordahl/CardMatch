@@ -4,10 +4,31 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Card View Controller - Card Match-->
+        <!--Set Card View Controller - Set-->
+        <scene sceneID="aGg-vs-MQJ">
+            <objects>
+                <viewController id="awK-2z-xaZ" customClass="SetCardViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GLA-nC-Ja9">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dark-abstract.jpg" id="OUH-xz-2mR">
+                                <rect key="frame" x="-36" y="0.0" width="361" height="549"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Set" id="ZD7-Rh-cwL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mze-AR-WkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2031" y="-647"/>
+        </scene>
+        <!--Card Game View Controller - Match-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="CardViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="CardGameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="center" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -270,13 +291,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cards to Match" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iCY-nU-K39">
-                                <rect key="frame" x="113" y="398" width="141" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8bH-hp-M1o">
                                 <rect key="frame" x="166" y="7" width="131" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -307,17 +321,6 @@
                                     <action selector="restartGame:" destination="2" eventType="touchUpInside" id="s2F-Dt-sgD"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Nkc-Hl-6ks">
-                                <rect key="frame" x="113" y="441" width="104" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="2"/>
-                                    <segment title="3"/>
-                                </segments>
-                                <connections>
-                                    <action selector="matchCountChanged:" destination="2" eventType="valueChanged" id="wkV-Kb-uNa"/>
-                                </connections>
-                            </segmentedControl>
                             <slider opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" id="MwL-3t-U2q">
                                 <rect key="frame" x="12" y="368" width="290" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -330,9 +333,8 @@
                             </slider>
                         </subviews>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Card Match" id="1Ez-93-uGR"/>
+                    <tabBarItem key="tabBarItem" title="Match" id="1Ez-93-uGR"/>
                     <connections>
-                        <outlet property="cardMatchControl" destination="Nkc-Hl-6ks" id="OKh-jo-iOa"/>
                         <outlet property="flipsLabel" destination="EWN-ll-6NT" id="pRd-oz-hJu"/>
                         <outlet property="historySlider" destination="MwL-3t-U2q" id="e4U-Em-1P5"/>
                         <outlet property="progressLbl" destination="rsV-wF-Nfj" id="OjX-wc-HXB"/>
@@ -358,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2211" y="-1081"/>
+            <point key="canvasLocation" x="-2396" y="-1144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fRa-Gg-pZP">
@@ -372,7 +374,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="Eef-vQ-xJN"/>
-                        <segue destination="kU7-yx-MXu" kind="relationship" relationship="viewControllers" id="3yk-MZ-KLN"/>
+                        <segue destination="awK-2z-xaZ" kind="relationship" relationship="viewControllers" id="T7o-s0-nZb"/>
+                        <segue destination="kU7-yx-MXu" kind="relationship" relationship="viewControllers" id="oTa-w8-zwl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qin-fe-33U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,13 +462,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrU-Wh-sV8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2216" y="-420"/>
+            <point key="canvasLocation" x="-2380" y="-78"/>
         </scene>
     </scenes>
     <resources>
         <image name="dark-abstract.jpg" width="640" height="1136"/>
         <image name="dark-holes.jpg" width="640" height="1136"/>
     </resources>
+    <classes>
+        <class className="CardGameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
+                <relationship kind="action" name="matchCountChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="restartGame:" candidateClass="UIButton"/>
+                <relationship kind="action" name="sliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="cardMatchControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="historySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="progressLbl" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="GameResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameResultViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="display" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="SetCardViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -8,11 +8,10 @@
 
 #import "Card.h"
 
-@interface PLayingCard : Card
+@interface PlayingCard : Card
 
 @property (strong, nonatomic) NSString *suit; // heart etc...
 @property (nonatomic) NSUInteger rank; // 0 and 13
-
 
 +(NSArray *) validSuits;
 +(NSUInteger) maxRank;

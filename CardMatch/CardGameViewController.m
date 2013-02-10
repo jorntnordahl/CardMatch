@@ -6,28 +6,29 @@
 //  Copyright (c) 2013 Jorn Nordahl. All rights reserved.
 //
 
-#import "CardViewController.h"
+#import "CardGameViewController.h"
 #import "CardMatchingGame.h"
-#import "CardMatchinGame3.h"
 #import "GameResult.h"
 
-@interface CardViewController ()
+@interface CardGameViewController ()
 
+// outlets:
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (nonatomic) int flipCount;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (strong, nonatomic) CardMatchingGame *game;
-@property (weak, nonatomic) IBOutlet UIButton *restartButton;
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *cardMatchControl;
-@property (nonatomic) NSInteger matchCount;
-@property (weak, nonatomic) IBOutlet UISlider *historySlider;
+
+// properies:
+//@property (nonatomic) NSInteger matchCount;
+@property (strong, nonatomic) CardMatchingGame *game;
+@property (nonatomic) int flipCount;
 @property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
-@implementation CardViewController
+@implementation CardGameViewController
 
 @synthesize flipsLabel;
 
@@ -46,18 +47,11 @@
 {
     if (!_game)
     {
-        if (self.matchCount == 2 || self.matchCount == 0)
-        {
+        
             _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                      usingDeck:[[PLayingCardDeck alloc] init]
+                                                      usingDeck:[[PlayingCardDeck alloc] init]
                                                     andMatchCount:[[self.cardMatchControl titleForSegmentAtIndex:self.cardMatchControl.selectedSegmentIndex] integerValue]];
-        }
-        else if (self.matchCount == 3)
-        {
-            _game = [[CardMatchinGame3 alloc] initWithCardCount:[self.cardButtons count]
-                                                      usingDeck:[[PLayingCardDeck alloc] init]
-                                                  andMatchCount:[[self.cardMatchControl titleForSegmentAtIndex:self.cardMatchControl.selectedSegmentIndex] integerValue]];
-        }
+        
     }
     
     return _game;
@@ -181,9 +175,5 @@
     self.gameResult.score = self.game.score;
 }
 
-- (IBAction)matchCountChanged:(UISegmentedControl *)sender {
-    NSString *countStr = [sender titleForSegmentAtIndex:sender.selectedSegmentIndex];
-    self.matchCount = [countStr integerValue];
-}
 
 @end

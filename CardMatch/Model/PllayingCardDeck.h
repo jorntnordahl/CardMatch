@@ -7,8 +7,8 @@
 //
 
 #import "Deck.h"
-#import "PLayingCard.h"
+#import "PlayingCard.h"
 
-@interface PLayingCardDeck : Deck
+@interface PlayingCardDeck : Deck
 
 @end

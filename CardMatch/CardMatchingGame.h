@@ -10,7 +10,9 @@
 #import "Card.h"
 #import "Deck.h" 
 
-@interface CardMatchingGame : NSObject
+#import "CardGame.h"
+
+@interface CardMatchingGame : CardGame
 @property (nonatomic, readwrite) int score;
 @property (strong, nonatomic) NSMutableArray *cards; //of cards
 @property (strong, nonatomic) NSMutableArray *flipResults;

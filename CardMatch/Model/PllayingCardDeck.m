@@ -6,20 +6,20 @@
 //  Copyright (c) 2013 Jorn Nordahl. All rights reserved.
 //
 
-#import "PLayingCardDeck.h"
+#import "PllayingCardDeck.h"
 
-@implementation PLayingCardDeck
+@implementation PlayingCardDeck
 
 - (id) init
 {
     self = [super init];
     if (self)
     {
-        for (NSString *suit in [PLayingCard validSuits])
+        for (NSString *suit in [PlayingCard validSuits])
         {
-            for (NSUInteger rank = 1; rank <= [PLayingCard maxRank]; rank++)
+            for (NSUInteger rank = 1; rank <= [PlayingCard maxRank]; rank++)
             {
-                PLayingCard *card = [[PLayingCard alloc] init];
+                PlayingCard *card = [[PlayingCard alloc] init];
                 card.rank = rank;
                 card.suit = suit;
                 
