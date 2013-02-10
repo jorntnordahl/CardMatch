@@ -10,10 +10,43 @@
 
 @interface SetCard : Card
 
-@property (strong, nonatomic) NSString *symbol;
-@property (strong, nonatomic) NSString *shading;
-@property (strong, nonatomic) NSString *color;
-@property (nonatomic) NSUInteger number;
+typedef enum
+{
+   ONE = 1,
+   TWO = 2,
+   TREE = 3
+} SetCount;
+
+typedef enum
+{
+    BLUE = 1,
+    RED = 2,
+    GREEN = 3
+} SetColor;
+
+typedef enum
+{
+    NONE = 1,
+    PARTIAL = 2,
+    SOLID = 3
+} SetShading;
+
+typedef enum
+{
+    TRIANGLE = 1,
+    CIRCLE = 2,
+    SQUARE = 3
+} SetShape;
+
++ (NSArray *) validCounts;
++ (NSArray *) validColors;
++ (NSArray *) validShadings;
++ (NSArray *) validShapes;
+
+@property (nonatomic) SetCount *number;
+@property (nonatomic) SetShape *shape;
+@property (nonatomic) SetShading *shading;
+@property (nonatomic) SetColor *color;
 
 
 @end

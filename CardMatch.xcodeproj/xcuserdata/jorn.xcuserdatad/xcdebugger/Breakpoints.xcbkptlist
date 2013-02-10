@@ -8,13 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "CardMatch/CardMatchingGame.m"
-         timestampString = "381385558.932111"
+         timestampString = "382226458.10131"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
-         landmarkName = "-initWithCardCount:usingDeck:andMatchCount:"
-         landmarkType = "5">
+         startingLineNumber = "39"
+         endingLineNumber = "39">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -54,6 +52,32 @@
          endingLineNumber = "24"
          landmarkName = "@interface GameResult"
          landmarkType = "2">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CardMatch/Model/SetCard.m"
+         timestampString = "382229986.462779"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
+         landmarkName = "+nameForShape:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "CardMatch/Model/SetDeck.m"
+         timestampString = "382230086.419039"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
+         landmarkName = "-init"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *cardMatchControl;
 
 // properies:
 //@property (nonatomic) NSInteger matchCount;
@@ -47,11 +46,9 @@
 {
     if (!_game)
     {
-        
-            _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                      usingDeck:[[PlayingCardDeck alloc] init]
-                                                    andMatchCount:[[self.cardMatchControl titleForSegmentAtIndex:self.cardMatchControl.selectedSegmentIndex] integerValue]];
-        
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+    
     }
     
     return _game;
@@ -92,7 +89,6 @@
     self.flipCount = 0;
     [self updateUI];
     self.progressLbl.text = @"Welcome to Match This Card!";
-    self.cardMatchControl.enabled = YES;
     self.game = nil;
 }
 
@@ -118,7 +114,6 @@
         }
     }
     
-    self.cardMatchControl.enabled = NO;
     
     // update label on top:
     self.progressLbl.text = [self.game lastFlipResults];

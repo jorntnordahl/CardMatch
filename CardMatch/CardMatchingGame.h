@@ -13,25 +13,6 @@
 #import "CardGame.h"
 
 @interface CardMatchingGame : CardGame
-@property (nonatomic, readwrite) int score;
-@property (strong, nonatomic) NSMutableArray *cards; //of cards
-@property (strong, nonatomic) NSMutableArray *flipResults;
-@property (nonatomic, readwrite) int matchCount;
 
-// designated initializer
--(id) initWithCardCount:(NSUInteger) count
-              usingDeck:(Deck *) deck
-          andMatchCount:(NSUInteger) matchCount;
-
-
--(void) flipCardAtIndex:(NSUInteger) index;
-
--(NSString *) flipResultAt:(int)index;
-
--(Card *)cardAtIndex:(NSUInteger)index;
-
--(BOOL) isGameOver;
-
--(NSString *) lastFlipResults;
 
 @end

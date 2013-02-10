@@ -14,28 +14,27 @@
 
 @implementation CardMatchingGame
 
--(NSMutableArray *) flipResults
+/*-(NSMutableArray *) flipResults
 {
     if (!_flipResults)
     {
         _flipResults = [[NSMutableArray alloc]init];
     }
     return _flipResults;
-}
+}*/
 
--(NSMutableArray *) cards
+/*-(NSMutableArray *) cards
 {
     if (!_cards)
     {
         _cards = [[NSMutableArray alloc]init];
     }
     return _cards;
-}
+}*/
 
 
--(id) initWithCardCount:(NSUInteger) count
+/*-(id) initWithCardCount:(NSUInteger) count
               usingDeck:(Deck *) deck
-          andMatchCount:(NSUInteger) matchCount
 {
     self = [super init];
     
@@ -55,7 +54,7 @@
     }
     
     return self;
-}
+}*/
 
 #define MATCH_BONUS_2 4;
 #define MATCH_BONUS_3 8;
@@ -114,6 +113,7 @@
         
 }
 
+/*
 -(Card *)cardAtIndex:(NSUInteger)index
 {
     Card *card = nil;
@@ -122,7 +122,7 @@
         card = self.cards[index];
     }
     return card;
-}
+}*/
 
 -(BOOL) isGameOver
 {
@@ -150,18 +150,19 @@
     return YES;
 }
 
--(NSString *) lastFlipResults
+/*-(NSString *) lastFlipResults
 {
     if (self.flipResults.count > 0)
     {
         return [self.flipResults objectAtIndex:0];
     }
     return nil;
-}
+}*/
 
+/*
 -(NSString *) flipResultAt:(int)index
 {
     return [self.flipResults objectAtIndex:index];
-}
+}*/
 
 @end
