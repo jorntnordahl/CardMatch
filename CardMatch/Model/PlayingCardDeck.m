@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Jorn Nordahl. All rights reserved.
 //
 
-#import "PllayingCardDeck.h"
+#import "PlayingCardDeck.h"
 
 @implementation PlayingCardDeck
 
