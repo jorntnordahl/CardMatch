@@ -6,35 +6,36 @@
 //  Copyright (c) 2013 Jorn Nordahl. All rights reserved.
 //
 
-#import "CardResult.h"
+#import "GameResult.h"
 
-@interface CardResult()
+@interface GameResult()
 @property (readwrite, nonatomic) NSDate *start;
 @property (readwrite, nonatomic) NSDate *end;
 
 @end
 
-@implementation CardResult
+@implementation GameResult
 
 #define START_KEY @"StartDate"
 #define END_KEY @"StartDate"
 #define SCORE_KEY @"Score"
 #define ALL_RESULTS_KEY @"GAMERESULTS_ALL"
 
--(NSArray *)allGameResults
++(NSArray *)allGameResults
 {
     NSMutableArray *allResults = [[NSMutableArray alloc]init];
     
     for (id pList in [[[NSUserDefaults standardUserDefaults] dictionaryForKey:ALL_RESULTS_KEY] allValues])
     {
-        CardResult *result = [[CardResult alloc]initfromPropertyList:pList];
+        GameResult *result = [[GameResult alloc]initFromPropertyList:pList];
         [allResults addObject: result];
     }
     
     return allResults;
 }
 
--(id) initfromPropertyList: (id) plist
+// convenience initializer:
+-(id) initFromPropertyList:(id)plist
 {
     self = [self init];
     if (self)
@@ -44,9 +45,16 @@
             NSDictionary *resultsDictionary = (NSDictionary *)plist;
             _start = resultsDictionary[START_KEY];
             _end = resultsDictionary[END_KEY];
-            _score = resultsDictionary[SCORE_KEY];
+            _score = [resultsDictionary[SCORE_KEY] intValue];
+            
+            if (!_start || !_end)
+            {
+                self = nil;
+            }
         }
     }
+    
+    return self;
 }
 
 
@@ -97,7 +105,25 @@
     [self synchronize];
 }
 
+- (NSComparisonResult)compareByDate:(GameResult *)other {
+    return ([[self start] compare:[other start ]]);
+}
 
+- (NSComparisonResult)compareByScore:(GameResult *)other {
+    if ([self score] < [other score])
+    {
+        return NSOrderedDescending;
+    }
+    return NSOrderedAscending;
+}
+
+- (NSComparisonResult)compareByTime:(GameResult *)other {
+    if ([self duration] < [other duration])
+    {
+        return NSOrderedDescending;
+    }
+    return NSOrderedAscending;
+}
 
 
 @end

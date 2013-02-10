@@ -9,6 +9,7 @@
 #import "CardViewController.h"
 #import "CardMatchingGame.h"
 #import "CardMatchinGame3.h"
+#import "GameResult.h"
 
 @interface CardViewController ()
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *cardMatchControl;
 @property (nonatomic) NSInteger matchCount;
 @property (weak, nonatomic) IBOutlet UISlider *historySlider;
+@property (strong, nonatomic) GameResult *gameResult;
 
 @end
 
@@ -29,6 +31,16 @@
 
 @synthesize flipsLabel;
 
+
+- (GameResult *) gameResult
+{
+    if (!_gameResult)
+    {
+        _gameResult = [[GameResult alloc]init];
+    }
+    
+    return _gameResult;
+}
 
 -(CardMatchingGame *) game
 {
@@ -73,6 +85,7 @@
     {
         // reset
         self.game = nil;
+        self.gameResult = nil;
         [self initUI];
     }
     // dismiss the alert (and go back to the app)
@@ -165,6 +178,7 @@
     [self updateUI];
     self.historySlider.maximumValue = [[self.game flipResults] count] - 1;
     self.historySlider.value = self.historySlider.maximumValue;
+    self.gameResult.score = self.game.score;
 }
 
 - (IBAction)matchCountChanged:(UISegmentedControl *)sender {
