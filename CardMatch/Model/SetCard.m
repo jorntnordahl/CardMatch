@@ -38,7 +38,7 @@
 {
     switch (count) {
         case BLUE:  return @"BLUE";
-        case RED:  return @"RED";
+        case RED:   return @"RED";
         case GREEN: return @"GREEN";
     }
     return @"unknown";
@@ -54,9 +54,9 @@
 +(NSString *) nameForShading:(SetShading) count
 {
     switch (count) {
-        case NONE:  return @"NONE";
-        case PARTIAL:  return @"PARTIAL";
-        case SOLID: return @"SOLID";
+        case NONE:    return @"NONE";
+        case PARTIAL: return @"PARTIAL";
+        case SOLID:   return @"SOLID";
     }
     return @"unknown";
 }
@@ -71,9 +71,9 @@
 +(NSString *) nameForShape:(SetShape) count
 {
     switch (count) {
-        case TRIANGLE:  return @"TRIANGLE";
-        case CIRCLE:  return @"CIRCLE";
-        case SQUARE: return @"SQUARE";
+        case TRIANGLE: return @"TRIANGLE";
+        case CIRCLE:   return @"CIRCLE";
+        case SQUARE:   return @"SQUARE";
     }
     return @"unknown";
 }

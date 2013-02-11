@@ -17,14 +17,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hSW-Ec-95T">
-                                <rect key="frame" x="20" y="458" width="55" height="21"/>
+                                <rect key="frame" x="20" y="458" width="99" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5nD-LB-Ozf">
-                                <rect key="frame" x="236" y="458" width="64" height="21"/>
+                                <rect key="frame" x="196" y="458" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -538,7 +538,7 @@
                     <tabBarItem key="tabBarItem" title="Set" id="ZD7-Rh-cwL"/>
                     <connections>
                         <outlet property="flipsLabel" destination="hSW-Ec-95T" id="fSe-qW-Qbp"/>
-                        <outlet property="historyLabel" destination="Ei2-RP-sfo" id="Iv7-3g-D5L"/>
+                        <outlet property="progressLbl" destination="Ei2-RP-sfo" id="sXX-Xu-gBD"/>
                         <outlet property="scoreLabel" destination="5nD-LB-Ozf" id="2IG-N5-dgm"/>
                         <outletCollection property="cardButtons" destination="vE2-tV-l1D" id="T7e-io-dPH"/>
                         <outletCollection property="cardButtons" destination="dk1-Dt-Hf7" id="0Tm-8I-Z7w"/>
@@ -1079,39 +1079,6 @@
         <image name="dark-abstract.jpg" width="640" height="1136"/>
         <image name="dark-holes.jpg" width="640" height="1136"/>
     </resources>
-    <classes>
-        <class className="CardGameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="action" name="restartGame:" candidateClass="UIButton"/>
-                <relationship kind="action" name="sliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="cardMatchControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="historySlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="progressLbl" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="GameResultViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameResultViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="display" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="SetCardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dealClicked:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="historyLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

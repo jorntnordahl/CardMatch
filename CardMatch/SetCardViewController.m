@@ -51,27 +51,28 @@
 }
 
 
+#define DEF_TRIANGLE @"△"
+#define DEF_CIRCLE @"◯"
+#define DEF_SQUARE @"▢"
+
 
 -(void) updateUI
 {
     for (UIButton *cardbutton in self.cardButtons)
     {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
-        [cardbutton setTitle:card.contents forState:UIControlStateSelected];
-        [cardbutton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-        cardbutton.selected = card.isFaceUp;
-        cardbutton.enabled = !card.isUnplayable;
-        cardbutton.alpha = (card.isUnplayable ? 0.3 : 1.0);
-        if (!card.isFaceUp)
-        {
-            //
-            
-            //[cardbutton setBackgroundImage:btnImage forState:UIControlStateNormal];
-        }
-        else
-        {
-            //[cardbutton setBackgroundImage:nil forState:UIControlStateNormal];
-        }
+        SetCard *card = (SetCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
+        NSString *titleString = [self cardTitle:card];
+        [cardbutton setTitle:titleString forState:UIControlStateNormal];
+
+        NSMutableAttributedString *mat = [self applyCardValues:[cardbutton.titleLabel.attributedText mutableCopy] toCard:card withTitle:titleString];
+        cardbutton.titleLabel.attributedText = mat;
+        
+        
+        
+                //[cardbutton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        //cardbutton.selected = card.isSelected;
+        //cardbutton.enabled = !card.isUnplayable;
+        cardbutton.backgroundColor = (card.isSelected ? [UIColor lightGrayColor] : [UIColor whiteColor]);
     }
     
     // update label on top:
@@ -82,6 +83,53 @@
     
     // figure out if there are no other cards:
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", [self.game score]];
+}
+
+// this method should update the mat based on the passed card:
+-(NSMutableAttributedString *) applyCardValues:(NSMutableAttributedString *) mat toCard:(SetCard *) card withTitle:(NSString *) title
+{
+    
+    
+    
+    
+    
+    return mat;
+}
+
+-(NSString *) cardTitle:(SetCard *) card
+{
+    // first, figure out what kind of shape we are showing on this card:
+    NSString *shape = [self cardShape: card];
+    
+    // then, figure out how many number of the shape we need to show:
+    SetCount countEnum = [card number];
+    int count = 0;
+    switch(countEnum)
+    {
+        case ONE: count = 1;break;
+        case TWO: count = 2;break;
+        case TREE:count = 3;break;
+    }
+    
+    // then, finally, create the string for that many items:
+    NSString *desc = @"";
+    for (int i = 0; i < count; i++)
+    {
+        desc = [desc stringByAppendingString:shape];
+    }
+    
+    return desc;
+}
+
+-(NSString *) cardShape:(SetCard *) card
+{
+    SetShape shape = [card shape];
+    switch (shape)
+    {
+        case TRIANGLE:  return DEF_TRIANGLE;
+        case CIRCLE:    return DEF_CIRCLE;
+        case SQUARE:    return DEF_SQUARE;
+    }
 }
 
 - (void)viewDidLoad
@@ -108,8 +156,6 @@
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject: sender]];
     self.flipCount++;
     [self updateUI];
-    //self.historySlider.maximumValue = [[self.game flipResults] count] - 1;
-    //self.historySlider.value = self.historySlider.maximumValue;
     self.gameResult.score = self.game.score;
 }
 

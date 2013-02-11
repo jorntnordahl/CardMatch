@@ -48,5 +48,7 @@ typedef enum
 @property (nonatomic) SetShading *shading;
 @property (nonatomic) SetColor *color;
 
+@property (nonatomic, getter=isSelected) BOOL selected;
+
 
 @end
