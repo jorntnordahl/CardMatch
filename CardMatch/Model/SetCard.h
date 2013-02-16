@@ -43,10 +43,15 @@ typedef enum
 + (NSArray *) validShadings;
 + (NSArray *) validShapes;
 
-@property (nonatomic) SetCount *number;
-@property (nonatomic) SetShape *shape;
-@property (nonatomic) SetShading *shading;
-@property (nonatomic) SetColor *color;
+//@property (nonatomic) SetCount *number;
+//@property (nonatomic) SetShape *shape;
+//@property (nonatomic) SetShading *shading;
+//@property (nonatomic) SetColor *color;
+
+@property (nonatomic) int number;
+@property (nonatomic) int shape;
+@property (nonatomic) int shading;
+@property (nonatomic) int color;
 
 @property (nonatomic, getter=isSelected) BOOL selected;
 
