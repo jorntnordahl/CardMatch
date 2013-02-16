@@ -19,8 +19,6 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *progressLbl;
 
-// properies:
-//@property (nonatomic) NSInteger matchCount;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) GameResult *gameResult;
@@ -94,13 +92,12 @@
 
 -(void) updateUI
 {
-    UIImage *btnImage = [UIImage imageNamed:@"red-card-2.png"];
+    UIImage *btnImage = [UIImage imageNamed:@"card-back.png"];
     
     for (UIButton *cardbutton in self.cardButtons)
     {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
-        [cardbutton setTitle:card.contents forState:UIControlStateSelected];
-        [cardbutton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:[self.cardButtons indexOfObject:cardbutton]];
+        
         cardbutton.selected = card.isFaceUp;
         cardbutton.enabled = !card.isUnplayable;
         cardbutton.alpha = (card.isUnplayable ? 0.3 : 1.0);
@@ -112,6 +109,12 @@
         {
             [cardbutton setBackgroundImage:nil forState:UIControlStateNormal];
         }
+        
+        NSString *imageName = [NSString stringWithFormat:@"%@-%d.png", [card suitAsString], card.rank];
+        UIImage *cardImage = [UIImage imageNamed:imageName];
+        
+        [cardbutton setImage:cardImage forState:UIControlStateSelected];
+        [cardbutton setImage:cardImage forState:UIControlStateSelected|UIControlStateDisabled];
     }
     
     

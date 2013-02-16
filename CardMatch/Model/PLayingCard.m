@@ -14,6 +14,7 @@
 @synthesize rank = _rank;
 
 
+
 -(int) match:(NSArray *)otherCards
 {
     int score = 0;
@@ -66,7 +67,7 @@
 
 +(NSArray *) validRanks
 {
-    return @[@"?", @"A",@"1",@"2",@"3",@"4",@"5", @"6",@"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
+    return @[@"?", @"A",@"1",@"2",@"3",@"4",@"5", @"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13"];
 }
 
 +(NSUInteger) maxRank
@@ -94,6 +95,27 @@
             _rank = rank;
         }
 
+}
+
+-(NSString *) suitAsString
+{
+    if ([self.suit isEqualToString:@"♠"])
+    {
+        return @"spade";
+    }
+    else if ([self.suit isEqualToString:@"♣"])
+    {
+        return @"club";
+    }
+    else if ([self.suit isEqualToString:@"♥"])
+    {
+        return @"heart";
+    }
+    else if ([self.suit isEqualToString:@"♦"])
+    {
+        return @"diamond";
+    }
+    return @"?";
 }
 
 @end
