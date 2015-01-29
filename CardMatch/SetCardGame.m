@@ -121,6 +121,8 @@
     int matchCount = 0;
     NSMutableArray *results = [[NSMutableArray alloc]init];
     
+    [results addObject:@"hello"];
+    
     for(int i = 0; i <= self.cards.count-3; i++)
     {
         card1 = self.cards[i];
@@ -133,7 +135,10 @@
             for(int k = j+1; k <= self.cards.count-1; k++)
             {
                 card3 = self.cards[k];
-                if (card3.isUnplayable) continue;
+                if (card3.isUnplayable)
+                {
+                    continue;
+                }
                 
                 iterations++;
                 
